@@ -8,39 +8,53 @@ int main()
     int navioDiagonal1[3] = {7, 8, 9};
     int navioDiagonal2[3] = {9, 8, 7};
 
-    // Imprime o tabuleiro
-    printf("Tabuleiro:\n");
+    // Inicializa o tabuleiro com zeros
     for (int y = 0; y <= 9; y++)
     {
         for (int x = 0; x <= 9; x++)
         {
             tabuleiro[y][x] = 0;
-            printf(" %d ", tabuleiro[y][x]);
         }
-        printf("\n");
     }
-    printf("\n");
 
-    // adiciona os navios X e Y
+    // adiciona os navios X e Y com validação
     for (int i = 0; i <= 2; i++)
     {
-        if (navioX[i] >= 0 && navioX[i] <=9)
+        if (navioX[i] >= 0 && navioX[i] <= 9 && 3 >= 0 && 3 <= 9)
         {
-            tabuleiro[3][navioX[i]] = 3;
-        }else{
-            printf("as cordenadas do navioX são invalidas \n");
+            if (tabuleiro[3][navioX[i]] == 0)
+            {
+                tabuleiro[3][navioX[i]] = 3;
+            }
+            else
+            {
+                printf("Sobreposição detectada em navioX[%d]: posição [3][%d]\n", i, navioX[i]);
+            }
+        }
+        else
+        {
+            printf("Coordenadas inválidas para navioX[%d]: [3][%d]\n", i, navioX[i]);
         }
 
-        if(navioY[i] >= 0 && navioY[i] <=9){
-            tabuleiro[navioY[i]][4] = 3;
-        }else{
-            printf("as cordenadas do navioY são invalidas \n");
+        if (navioY[i] >= 0 && navioY[i] <= 9 && 4 >= 0 && 4 <= 9)
+        {
+            if (tabuleiro[navioY[i]][4] == 0)
+            {
+                tabuleiro[navioY[i]][4] = 3;
+            }
+            else
+            {
+                printf("Sobreposição detectada em navioY[%d]: posição [%d][4]\n", i, navioY[i]);
+            }
         }
-        
+        else
+        {
+            printf("Coordenadas inválidas para navioY[%d]: [%d][4]\n", i, navioY[i]);
+        }
     }
 
-    // Reimprime o tabuleiro com os navios X e Y
-    printf("Tabuleiro com navios X e Y adicionados;\n");
+    // Mostra o tabuleiro após navios X e Y
+    printf("\nTabuleiro com navios X e Y adicionados:\n");
     for (int y = 0; y <= 9; y++)
     {
         for (int x = 0; x <= 9; x++)
@@ -49,29 +63,49 @@ int main()
         }
         printf("\n");
     }
-    printf("\n");
 
-    // Adiciona navios Diagonal 1 e 2
+    // Adiciona navioDiagonal1
     for (int i = 0; i <= 2; i++)
     {
-        if (navioDiagonal1[i] >= 0 && navioDiagonal1[i] <=9)
+        if (i >= 0 && i <= 9 && navioDiagonal1[i] >= 0 && navioDiagonal1[i] <= 9)
         {
-            tabuleiro[i][navioDiagonal1[i]] = 3;
-        }else{
-            printf("as cordenadas do navioDiagonal1 são invalidas \n");
+            if (tabuleiro[i][navioDiagonal1[i]] == 0)
+            {
+                tabuleiro[i][navioDiagonal1[i]] = 3;
+            }
+            else
+            {
+                printf("Sobreposição detectada em navioDiagonal1[%d]: posição [%d][%d]\n", i, i, navioDiagonal1[i]);
+            }
         }
-
-        if(navioDiagonal2[i] >= 0 && navioDiagonal2[i] <=9){
-            tabuleiro[navioDiagonal2[i]][i] = 3;
-        }else{
-            printf("as cordenadas do navioDiagonal2 são invalidas \n");
+        else
+        {
+            printf("Coordenadas inválidas para navioDiagonal1[%d]: [%d][%d]\n", i, i, navioDiagonal1[i]);
         }
-        
-        
     }
 
-    // Reimprime o tabuleiro com os navios Diagonal1 e Diagonal2
-    printf("Tabuleiro com navios Diagonal1 e Diagonal2 adicionados;\n");
+    // Adiciona navioDiagonal2
+    for (int i = 0; i <= 2; i++)
+    {
+        if (navioDiagonal2[i] >= 0 && navioDiagonal2[i] <= 9 && i >= 0 && i <= 9)
+        {
+            if (tabuleiro[navioDiagonal2[i]][i] == 0)
+            {
+                tabuleiro[navioDiagonal2[i]][i] = 3;
+            }
+            else
+            {
+                printf("Sobreposição detectada em navioDiagonal2[%d]: posição [%d][%d]\n", i, navioDiagonal2[i], i);
+            }
+        }
+        else
+        {
+            printf("Coordenadas inválidas para navioDiagonal2[%d]: [%d][%d]\n", i, navioDiagonal2[i], i);
+        }
+    }
+
+    // Imprime o tabuleiro final com todos os navios
+    printf("\nTabuleiro com todos os navios adicionados:\n");
     for (int y = 0; y <= 9; y++)
     {
         for (int x = 0; x <= 9; x++)
@@ -83,6 +117,7 @@ int main()
 
     return 0;
 }
+
 
 // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
 
