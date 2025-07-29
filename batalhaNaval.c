@@ -6,7 +6,7 @@ int main()
     int navioX[3] = {3, 4, 5};
     int navioY[3] = {7, 8, 9};
     int navioDiagonal1[3] = {7,8,9};
-    int navioDiagonal2[3] = {7,8,9};
+    int navioDiagonal2[3] = {9,8,7};
 
     // Imprime o tabuleiro
     printf("Tabuleiro:\n");
@@ -25,7 +25,7 @@ int main()
     for (int i = 0; i <= 2; i++)
     {
         tabuleiro[3][navioX[i]] = 3;
-        tabuleiro[navioY[i]][3] = 3;
+        tabuleiro[navioY[i]][4] = 3;
     }
     
     // Reimprime o tabuleiro com os navios X e Y
