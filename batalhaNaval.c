@@ -1,16 +1,21 @@
 #include <stdio.h>
 
 int main() {
-
+    // printf("%d", letras[y]);
+    char letras[] = {'A','B','C','D','E','F','G','H','I','J',};
+    int tabuleiro[10][10];
     int navio1[3] = {3,4,5};
     int navio2[3] = {7,8,9};
     // Imprime as linhas do tabuleiro + navios
     for (int y = 0; y <= 9; y++) {
+        printf(" ");
+        printf(" %d ", y + 1 );
         for (int x = 0; x <= 9; x++) {
+            printf("");
             if(navio1[0] ==  x && y == 3 || navio1[1] == x && y == 3|| navio1[2] == x && y == 3 || navio2[0] ==  y && x == 3 || navio2[1] == y && x == 3|| navio2[2] == y && x == 3){
-                printf(" 3 ");
+                printf(" %d ", tabuleiro[y][x] = 3);
             }else{
-                printf(" 0 ");
+                printf(" %d ", tabuleiro[y][x] = 0);
             }
         }
         printf("\n");
